@@ -1,0 +1,157 @@
+$column: 90px;
+$gutter: 10px;
+$grid-columns: 12;
+$max-width: 1100px;
+
+$small: 400px;
+$medium: 835px;
+$large: 1100px;
+
+/**
+  Basically we want a grid that supports size varieties of:
+  0-399px as $small-screen
+  400-835px as $medium-screen
+  836-1100px as $large-screen
+  1100-Infinity as $xl-screen
+**/
+
+$__small: strip-units($small) - 1;
+$__medium: strip-units($medium) + 1;
+$__large: strip-units($large) - 1;
+
+$small-screen: new-breakpoint(max-width em($__small) 2);
+$medium-screen: new-breakpoint(min-width em($small) max-width em($medium) 4);
+$large-screen: new-breakpoint(min-width em($__medium) max-width em($__large) 8);
+$xl-screen: new-breakpoint(min-width em($large));
+
+@mixin one-quarter {
+  @include media($small-screen) {
+    @include span-columns(2);
+    @include omega(1n);
+  }
+  @include media($medium-screen) {
+    @include span-columns(2);
+    @include omega(2n);
+  }
+  @include media($large-screen) {
+    @include span-columns(2);
+    @include omega(4n);
+  }
+  @include media($xl-screen) {
+    @include span-columns(3);
+    @include omega(4n);
+  }
+}
+
+@mixin one-quarter-nom {
+  @include media($small-screen) {
+    @include span-columns(2);
+  }
+  @include media($medium-screen) {
+    @include span-columns(2);
+  }
+  @include media($large-screen) {
+    @include span-columns(2);
+  }
+  @include media($xl-screen) {
+    @include span-columns(3);
+  }
+}
+
+@mixin one-third {
+  @include media($small-screen) {
+    @include span-columns(2);
+    @include omega(1n);
+  }
+  @include media($medium-screen) {
+    @include span-columns(4);
+    @include omega(1n);
+  }
+  @include media($large-screen) {
+    @include span-columns(2.66);
+    @include omega(3n);
+  }
+  @include media($xl-screen) {
+    @include span-columns(4);
+    @include omega(3n);
+  }
+}
+
+@mixin one-third-nom {
+  @include media($small-screen) {
+    @include span-columns(2);
+  }
+  @include media($medium-screen) {
+    @include span-columns(4);
+  }
+  @include media($large-screen) {
+    @include span-columns(2.66);
+  }
+  @include media($xl-screen) {
+    @include span-columns(4);
+  }
+}
+
+@mixin two-thirds-nom {
+  @include media($small-screen) {
+    @include span-columns(2);
+  }
+  @include media($medium-screen) {
+    @include span-columns(4);
+  }
+  @include media($large-screen) {
+    @include span-columns(5.33);
+  }
+  @include media($xl-screen) {
+    @include span-columns(8);
+  }
+}
+
+@mixin one-half {
+  @include media($small-screen) {
+    @include span-columns(2);
+    @include omega(1n);
+  }
+  @include media($medium-screen) {
+    @include span-columns(4);
+    @include omega(1n);
+  }
+  @include media($large-screen) {
+    @include span-columns(4);
+    @include omega(2n);
+  }
+  @include media($xl-screen) {
+    @include span-columns(6);
+    @include omega(2n);
+  }
+}
+
+@mixin one-half-nom {
+  @include media($small-screen) {
+    @include span-columns(2);
+  }
+  @include media($medium-screen) {
+    @include span-columns(4);
+  }
+  @include media($large-screen) {
+    @include span-columns(4);
+  }
+  @include media($xl-screen) {
+    @include span-columns(6);
+  }
+}
+
+@mixin full-span {
+  @include media($small-screen) {
+    @include span-columns(2);
+  }
+  @include media($medium-screen) {
+    @include span-columns(4);
+  }
+  @include media($large-screen) {
+    @include span-columns(8);
+  }
+  @include media($xl-screen) {
+    @include span-columns(12);
+  }
+}

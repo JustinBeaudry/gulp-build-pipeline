@@ -1,0 +1,114 @@
+@import 'bourbon';
+@import 'neat';
+
+@import 'colors';
+@import 'fonts';
+@import 'grid';
+
+@mixin link ($color) {
+  a {
+    color: $color;
+    text-decoration: none;
+    &:visited {
+      color: $color;
+    }
+    &:hover {
+      color: $color;
+    }
+    &:active {
+      color: $color;
+    }
+  }
+}
+
+body {
+  margin: 1em;
+}
+
+header, footer {
+  @include outer-container;
+  aside {
+    float: right;
+    @include link($link-address-color);
+  }
+}
+
+header {
+  margin-bottom: 1em;
+}
+
+footer {
+  margin-top: 2em;
+  @include link($link-address-color);
+  p {
+    margin: 0;
+    @include link($link-address-color);
+  }
+  section {
+    margin-top: 1em;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $display-font;
+  color: $h-color;
+}
+
+h1 {
+  font-size: 4em;
+  width: 50%;
+  margin-top: 0;
+  margin-bottom: 0.3em;
+}
+
+h2 {
+  color: $h2-color;
+  position: relative;
+  margin-bottom: 2em;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 40px;
+    right: 85%;
+    height: 6px;
+    width: 15%;
+    background-color: $border-color;
+  }
+}
+
+h3 {
+  color: $h2-color;
+}
+
+span.sub-heading {
+  display: block;
+  font-family: $display-font;
+  font-style: italic;
+  font-size: 1.6em;
+  color: $sub-h-color;
+
+  @include link($link-address-color);
+}
+
+p, span {
+  font-family: $text-font;
+}
+
+p {
+  color: $link-display-color;
+}
+
+main {
+  @include outer-container;
+
+  section {
+    @include one-quarter;
+    ul {
+      list-style: none;
+      margin-bottom: 3em;
+      li {
+        @include link($link-address-color);
+      }
+    }
+  }
+}
